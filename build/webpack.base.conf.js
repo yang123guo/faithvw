@@ -30,6 +30,7 @@ module.exports = {
       'utils': resolve('src/utils'),
 	  'assets': resolve('src/assets'),
 	  'common': resolve('src/common'),
+      'mixins': resolve('src/mixins'),
       'components': resolve('src/components'),
 	  'libs': resolve('src/libs'),
 	  'pages': resolve('src/pages'),
