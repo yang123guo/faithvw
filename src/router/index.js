@@ -17,9 +17,9 @@ const HelloWorld = r => require.ensure(
 	() => r(require('pages/hello/HelloWorld')),
 	'hello'
 );
-const Notification = r => require.ensure(
+const FormTest = r => require.ensure(
 	[],
-	() => r(require('components/notification/index.vue')),
+	() => r(require('pages/form/index.vue')),
 	'hello'
 );
 
@@ -33,8 +33,8 @@ const routes = [
         component: HelloWorld
     },
     {
-        path: '/notification',
-        component: Notification
+        path: '/form-test',
+        component: FormTest
     }
 ]
 

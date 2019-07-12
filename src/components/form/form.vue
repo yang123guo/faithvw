@@ -30,7 +30,34 @@ export default {
         };
     },
     methods: {
-
+        // 公开方法:全部重置数据 resetFields() {
+        resetFields() {
+            // this.fields里面存放的是formItem的实例，实例含有resetField方法。
+            this.fields.forEach(item => {
+                item.resetField();
+            })
+        },
+        // 参数是回调函数，返回值是一个Boolean值。
+        validate(callback) {
+            return new Promise(resolve => {
+                let valid = true;
+                let count = 0;
+                this.fields.forEach(item => {
+                    item.validate('', errors => {
+                        if(errors) {
+                            valid = false;
+                        }
+                        // 全部完成
+                        if(++count === this.fields.length) {
+                            resolve(valid);
+                            if (typeof callback === 'function') {
+                                callback(valid);
+                            };
+                        }
+                    })
+                })
+            })
+        }
     },
     created() {
         //  其中field为子组件实例

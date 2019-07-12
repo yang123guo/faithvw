@@ -15,6 +15,7 @@
 
 <script>
 import Emitter from 'mixins/emitter.js';
+import AsyncValidator from 'async-validator';
 export default {
     name: "faFormItem",
     data() {
