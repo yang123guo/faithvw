@@ -42,6 +42,7 @@
         },
         methods: {
             handleSubmit () {
+                debugger;
                 this.$refs.form.validate((valid) => {
                     if (valid) {
                         window.alert('提交成功');

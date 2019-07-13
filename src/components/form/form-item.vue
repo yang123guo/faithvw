@@ -37,6 +37,7 @@ export default {
     computed: {
         fieldValue() {
             // this.form是form提供的 动态获取表单组件对应prop的值
+            console.log(this.form.model, this.prop, this.form.model[this.prop], 'fieldValue')
             return this.form.model[this.prop];
         }
     },

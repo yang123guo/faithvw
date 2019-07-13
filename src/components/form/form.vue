@@ -39,16 +39,19 @@ export default {
         },
         // 参数是回调函数，返回值是一个Boolean值。
         validate(callback) {
+            const _this = this;
+            console.log(this.fields, 'dd')
             return new Promise(resolve => {
+                console.log(_this.fields, 'tt')
                 let valid = true;
                 let count = 0;
-                this.fields.forEach(item => {
+                _this.fields.forEach(item => {
                     item.validate('', errors => {
                         if(errors) {
                             valid = false;
                         }
                         // 全部完成
-                        if(++count === this.fields.length) {
+                        if(++count === _this.fields.length) {
                             resolve(valid);
                             if (typeof callback === 'function') {
                                 callback(valid);
