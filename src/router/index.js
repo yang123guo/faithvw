@@ -22,6 +22,11 @@ const FormTest = r => require.ensure(
 	() => r(require('pages/form/index.vue')),
 	'hello'
 );
+const CheckboxTest = r => require.ensure(
+	[],
+	() => r(require('pages/checkbox/index.vue')),
+	'hello'
+);
 
 Vue.use(Router);
 
@@ -35,6 +40,10 @@ const routes = [
     {
         path: '/form-test',
         component: FormTest
+    },
+    {
+        path: '/checkbox-test',
+        component: CheckboxTest
     }
 ]
 

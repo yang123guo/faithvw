@@ -29,6 +29,7 @@
     import { findComponentUpward } from 'utils/assist.js';
     export default {
         name: 'faCheckbox',
+        mixins: [Emitter],
         props: {
             disabled: {
                 type: Boolean,
@@ -40,7 +41,7 @@
                 default: false
             },
             label: {
-                    type: [String, Number, Boolean]
+                type: [String, Number, Boolean]
             },
             trueValue: {
                 type: [String, Number, Boolean],

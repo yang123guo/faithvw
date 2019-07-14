@@ -24,6 +24,15 @@ export default {
         };
     },
     methods: {
+        /**
+         * 通过 findComponentsDownward 方法 找到所有的 Checkbox，
+         * 然后把 CheckboxGroup 的 value，
+         * 赋值给 Checkbox 的 model，并根据 Checkbox 的 label，
+         * 设置一次当前 Checkbox 的选中状态。
+         *
+         * 这样无论是由内而外选择，或由外向内修改数据，
+         * 都是双向 绑定的，而且支持动态增加 Checkbox 的数量。
+         */
         updateModel(flag) {
             // 取得子元素集合
             this.childrens = findComponentsDownward(this, 'faCheckbox');
@@ -33,6 +42,7 @@ export default {
                     value
                 } = this;
                 this.childrens.forEach(child => {
+                    // 把value传递给子组件的model
                     child.model = value;
 
                     // update是开关
@@ -43,6 +53,20 @@ export default {
                     }
                 });
             }
+        },
+        change(data) {
+            this.currentValue = data;
+            this.$emit('input', data);
+            this.$emit('on-change', data);
+            this.dispatch('faFormItem', 'on-form-change', data);
+        }
+    },
+    mounted () {
+        this.updateModel(true);
+    },
+    watch: {
+        value () {
+            this.updateModel(true);
         }
     }
 }
