@@ -1,15 +1,3 @@
-/**
- * @file: 全局请求配置
- * @version: 1.0.0
- * @author: yangguoqiang<yangguoqiang01@baidu.com>;
- * @Date: 2019-04-25 21:25:37
- * @LastEditors: yangguoqiang<yangguoqiang01@baidu.com>
- * @LastEditTime: 2019-04-25 21:25:37
- * @Description:
- * 	1、		管理系统不需要loading动画 后期 TODO:
- *  2、 	全局的baseUrl   TODO
- *
- */
 
 import axios from 'axios';
 import vm from 'src/main';

@@ -1,13 +1,3 @@
-/**
- * @file: 工具函数库
- * @version: 1.0.0
- * @author: yangguoqiang01
- * @LastEditors: yangguoqiang01
- * @Description:
- * @Date: 2019-04-23 14:54:14
- * @LastEditTime: 2019-04-23 17:28:46
- * @Tip: 工具方法要备注好
- */
 
 
 /**

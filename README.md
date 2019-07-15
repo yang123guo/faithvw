@@ -1,7 +1,3 @@
-# crm-fe
-
-> 小度商城CRM管理平台
-
 ## Build Setup
 
 ``` bash
