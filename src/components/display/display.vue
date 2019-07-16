@@ -3,6 +3,7 @@
 </template>
 <script>
     import Vue from 'vue';
+    import { getRandomStr } from 'utils';
     export default {
         props: {
             code: {
@@ -15,7 +16,8 @@
                 html: '',
                 js: '',
                 css: '',
-                component: null
+                component: null,
+                id: getRandomStr()
             }
         },
         methods: {
@@ -52,11 +54,47 @@
                     const Component = Vue.extend( parseStrToFunc );
                     this.component = new Component().$mount();
                     this.$refs.display.appendChild(this.component.$el);
+
+                    if(this.css !== '') {
+                        const style = document.createElement('style');
+                        style.type = 'text/css';
+                        style.id = this.id;
+                        style.innerHTML = this.css;
+                        document.getElementsByTagName('head')[0].appendChild(style);
+                    }
                 }
+            },
+
+            //  Display 组件销毁
+            destroyCode() {
+                // 获取对应id的style标签
+                const $target = document.getElementById(this.id);
+                // dom中移出style文件
+                if ($target) $target.parentNode.removeChild($target);
+
+                // 移出display中的生成dom
+                //
+                if (this.component) {
+                    this.$refs.display.removeChild(this.component.$el);
+                    this.component.$destroy();
+                    this.component = null;
+                }
+            }
+        },
+        watch: {
+            // 当 this.code 更新时，整个过程要重新来一次
+            code() {
+                // 删除旧的
+                this.destroyCode();
+                // 渲染新的
+                this.renderCode();
             }
         },
         mounted () {
             this.renderCode();
+        },
+        beforeDestroy () {
+            this.destroyCode();
         }
     }
 </script>

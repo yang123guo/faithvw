@@ -82,3 +82,15 @@ export function transPrecision(origin, opr = 'large', num = 2) {
     const mount = Math.pow(10, num);
     return opr === 'large' ? Number((origin * mount).toFixed(2)) : Number((origin / mount).toFixed(2));
 }
+
+
+// 生成随机字符串
+export function getRandomStr(len = 32) {
+    const $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    const maxPos = $chars.length;
+    let str = '';
+    for (let i = 0; i < len; i++) {
+        str += $chars.charAt(Math.floor(Math.random() * maxPos));
+    }
+    return str;
+}
