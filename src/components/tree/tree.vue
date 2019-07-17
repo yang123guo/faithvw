@@ -1,6 +1,11 @@
 <!-- src/components/tree/tree.vue -->
 <template>
     <div>
+        <!--
+            tree-node接收两个参数：
+            1、是否显示复选框
+            2、每个组件数据data
+        -->
         <tree-node
             v-for="(item, index) in cloneData"
             :key="index"
@@ -41,6 +46,7 @@ export default {
         }
     },
     methods: {
+        // 深克隆一份数据
         rebuildData () {
             this.cloneData = deepCopy(this.data);
         }
