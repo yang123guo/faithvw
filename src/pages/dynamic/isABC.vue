@@ -3,7 +3,11 @@
         <button @click="handleChange('A')">显示 A 组件</button>
         <button @click="handleChange('B')">显示 B 组件</button>
         <button @click="handleChange('C')">显示 C 组件</button>
-        <component :is="component"></component>
+
+        <!-- keep-alive使得下面的组件会缓存起来，不会销毁，也就不会重绘 -->
+        <keep-alive>
+            <component :is="component"></component>
+        </keep-alive>
     </div>
 </template>
 <script>

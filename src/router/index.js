@@ -32,6 +32,11 @@ const IsABC = r => require.ensure(
 	() => r(require('pages/dynamic/isABC.vue')),
 	'hello'
 );
+const useButton = r => require.ensure(
+	[],
+	() => r(require('pages/dynamic/useButton.vue')),
+	'hello'
+);
 
 Vue.use(Router);
 
@@ -49,6 +54,10 @@ const routes = [
     {
         path: '/checkbox-test',
         component: CheckboxTest
+    },
+    {
+        path: '/use-button',
+        component: useButton
     },
     {
         path: '/abc-test',

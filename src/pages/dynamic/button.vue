@@ -1,5 +1,7 @@
 <!-- button.vue -->
 <template>
+
+    <!-- component原生组件 有is属性 -->
     <component :is="tagName" v-bind="tagProps">
         <slot></slot>
     </component>
@@ -19,9 +21,11 @@ export default {
         }
     },
     computed: {
+        // 没有to 渲染button标签 有to渲染a标签
         tagName () {
             return this.to === '' ? 'button' : 'a';
         },
+        // 没有to props为{}  否则关于跳转属性
         tagProps () {
             let props = {};
             if (this.to) {
