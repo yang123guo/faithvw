@@ -87,15 +87,46 @@
                 this.$set(this.data, 'expand', !this.data.expand);
 
                 // 如果找到上层的Tree组件，执行Tree组件的emitEvent方法
-                // TODO: 这种方式借鉴。
+                // TODO: 借鉴。
                 if(this.tree) {
                     this.tree.emitEvent('on-toggle-expand', this.data);
                 }
             },
-            handleCheck() {
+            handleCheck(checked) {
+                // 当前组件 下面的所有子节点都会被选中/取消
+                this.updateTreeDown(this.data, checked);
 
+                if(this.tree) {
+                    this.tree.emitEvent('on-check-change', this.data);
+                }
+            },
+
+            // 子组件的操作
+            updateTreeDown(data, checked) {
+                this.$set(data, 'checked', checked);
+
+                if(data.children && data.children.length) {
+                    data.children.forEach(item => {
+                        this.updateTreeDown(item, checked)
+                    })
+                }
             }
         },
+        watch: {
+            'data.children': {
+                handler(data) {
+                    if(data) {
+                        // some有一个为true即为true
+                        // 有一个checked为false 那么为data.some为true，取反为false
+                        // 即：有一个checked为false，checkedAll结果为false
+                        // 直接用every多简单。
+                        const checkedAll = !data.some(item => !item.checked);
+                        this.$set(this.data, 'checked', checkedAll);
+                    }
+                },
+                deep: true
+            }
+        }
     }
 </script>
 <style>
