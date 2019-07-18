@@ -49,6 +49,10 @@ export default {
         // 深克隆一份数据
         rebuildData () {
             this.cloneData = deepCopy(this.data);
+        },
+        // 父组件的事件  留给子组件调用（ 参数是父组件的数据，也就是树的全部数据 ）
+        emitEvent (eventName, data) {
+            this.$emit(eventName, data, this.cloneData);
         }
     }
 }
