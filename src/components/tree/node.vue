@@ -89,6 +89,7 @@
                 // 如果找到上层的Tree组件，执行Tree组件的emitEvent方法
                 // TODO: 借鉴。
                 if(this.tree) {
+                    // 对外暴露的on-toggle-expand方法
                     this.tree.emitEvent('on-toggle-expand', this.data);
                 }
             },
@@ -97,6 +98,7 @@
                 this.updateTreeDown(this.data, checked);
 
                 if(this.tree) {
+                    // 对外暴露的on-check-change方法
                     this.tree.emitEvent('on-check-change', this.data);
                 }
             },
