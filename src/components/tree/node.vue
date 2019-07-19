@@ -10,8 +10,8 @@
         <li class="tree-li">
             <!-- 展开、收回点击区域 -->
             <span class="tree-expand" @click="handleExpand">
-                <span v-if="data.children && data.children.length && data.expand">+</span>
-                <span v-if="data.children && data.children.length && !data.expand">-</span>
+                <span v-if="data.children && data.children.length && data.expand">-</span>
+                <span v-if="data.children && data.children.length && !data.expand">+</span>
             </span>
             <!--
                 复选框区域

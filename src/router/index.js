@@ -37,6 +37,11 @@ const useButton = r => require.ensure(
 	() => r(require('pages/dynamic/useButton.vue')),
 	'hello'
 );
+const treeTest = r => require.ensure(
+	[],
+	() => r(require('pages/tree/tree.vue')),
+	'hello'
+);
 
 Vue.use(Router);
 
@@ -62,6 +67,10 @@ const routes = [
     {
         path: '/abc-test',
         component: IsABC
+    },
+    {
+        path: '/tree-test',
+        component: treeTest
     }
 ]
 
