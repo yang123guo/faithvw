@@ -11,7 +11,14 @@
 export default {
     data() {
         return {
-            tabList: []
+            activeKey: ''
+        }
+    },
+    props: {
+        tabList: {
+            type: Array,
+            default: [],
+            required: true
         }
     },
     methods: {
@@ -37,3 +44,7 @@ export default {
     },
 }
 </script>
+<style lang="less">
+    @import './tab.less';
+</style>
+
