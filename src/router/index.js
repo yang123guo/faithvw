@@ -42,6 +42,11 @@ const treeTest = r => require.ensure(
 	() => r(require('pages/tree/tree.vue')),
 	'hello'
 );
+const tabTest = r => require.ensure(
+	[],
+	() => r(require('pages/tabs/tab.vue')),
+	'hello'
+);
 
 Vue.use(Router);
 
@@ -71,6 +76,10 @@ const routes = [
     {
         path: '/tree-test',
         component: treeTest
+    },
+    {
+        path: '/tab-test',
+        component: tabTest
     }
 ]
 
