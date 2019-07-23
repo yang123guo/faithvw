@@ -1,9 +1,10 @@
 <template>
-    <div class="">
+    <div class="fa-tab-lists">
         <div :class="getClass(item)"
             v-for="(item, index) in tabList"
             :key="item.name || index"
             @click="handleChange(index)">
+            {{item.title}}
         </div>
     </div>
 </template>

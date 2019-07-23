@@ -10,10 +10,12 @@ export default {
         return {
             tabList: [
                 {
-                    name: 'yang'
+                    name: 'yang',
+                    title: '洋洋哥'
                 },
                 {
-                    name: 'faith'
+                    name: 'faith',
+                    title: '大帅哥'
                 }
             ]
         }

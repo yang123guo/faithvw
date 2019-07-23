@@ -44,7 +44,7 @@ const treeTest = r => require.ensure(
 );
 const tabTest = r => require.ensure(
 	[],
-	() => r(require('pages/tabs/tab.vue')),
+	() => r(require('pages/tabs/tabs.vue')),
 	'hello'
 );
 
