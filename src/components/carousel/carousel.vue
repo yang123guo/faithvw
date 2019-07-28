@@ -64,6 +64,7 @@ export default {
                 if (name) {
                     cb(child);
                 } else if (child.$children.length) {
+                    // 没有名字就找子元素  下级，一直找下去
                     child.$children.forEach((innerChild) => {
                         find(innerChild, cb);
                     });
