@@ -30,7 +30,8 @@
 export default {
     data() {
         return {
-            slides: []
+            slides: [],
+            slideInstances: [],
         };
     },
     computed: {
@@ -86,7 +87,17 @@ export default {
         },
         updateSlides() {
 
-        }
+        },
+
+        // 设置自动播放
+        setAutoplay () {
+            window.clearInterval(this.timer);
+            if (this.autoplay) {  // 开启自动播放时候要 setTimeout
+                this.timer = window.setInterval(() => {
+                    this.add(1);
+                }, this.autoplaySpeed);
+            }
+        },
     },
     mounted() {
         // 更新轮播图
